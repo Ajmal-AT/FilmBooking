@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Home</title>
+<link rel="stylesheet" href="#" th:href="@{/css/bootstrap.css}" />
+<link rel="stylesheet" href="#" th:href="@{/css/all.css}" />
+<link rel="stylesheet" href="#" th:href="@{/css/index.css}" />
+</head>
+<body>
+	<div>
+		<div style="margin:5%; margin-left: 10%; margin-right: 10%; background: red; ">
+			<div style="margin:20px; margin-left: 30%; margin-right: 10%; width: 50%; padding-top: 20px;  ">
+				<form action="" method="post" style="padding-left: 5px; padding-right: 5px; border-radius: 10px;  margin-top: 10px; background: #fff; display: flex; justify-content: center;">
+						<input type="text" placeholder="search for movies..," style="border: 0px; width: 100%; margin: 2px;" />
+						<button style="width: 5%; margin: 2px; margin-right:2.5%; border: 0px; background: transparent;" >		
+							<i><img src="icon/search (1).png"></i>
+						</button>
+						<div class="history-head">
+						<p>
+							<span><i class="fas fa-user"></i></span>&nbsp;<span
+								class="name-user" th:if="${session.user.name}"
+								th:text="${session.user.name}"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><i class="fas fa-envelope"></i>
+								<sup><i class="fas fa-sms"></i></sup></span>
+						</p>
+						</div>
+				</form>
+			</div>
+		    <div style="display: flex;">
+			    <div style="flex-basis: 20%; background: red; height: 100%;">
+				    <h3 style="background: black; color: white; padding: 5px; margin: 10px; margin-bottom: 20px;">AR Multiplex Theatre</h3>
+				    <nav style="margin: 20px;">
+                        <a href="loginHome"><img src="../icon/home.png"> Home</a>
+                        <a href="/register"><img src="../icon/social.png"> Register</a>
+                        <a href="/login"><img src="../icon/security.png"> Login</a>
+                        <a href="#"><img src="../icon/id-card.png"> About Us</a>
+                        <a href="#"><img src="../icon/contact.png"> Contact Us</a>
+                        <a th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout</a>
+                    </nav>
+			    </div>
+			    <div>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th scope="col" class="text-primary">Movie</th>
+								<th scope="col" class="text-primary">Seat</th>
+								<th scope="col" class="text-primary">Each Price</th>
+								<th scope="col" class="text-primary">Total price</th>
+								<th scope="col" class="text-primary">Booking Date</th>
+								<th scope="col" class="text-primary">Show on Date</th>
+								<th scope="col" class="text-primary">Show on Time</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="history: ${seatRecords}">
+								<th th:text="${history.movieName}"></th>
+								<th th:text="${history.seat}"></th>
+								<th th:text="${history.price}"></th>
+								<th th:text="${history.total}"></th>
+								<th th:text="${#dates.format(history.bookOnDate, 'dd-MM-yyyy')}"></th>
+								<th th:text="${#dates.format(history.showOnDate, 'dd-MM-yyyy')}"
+									th:classappend="${(history.showOnDate eq #dates.createToday()) or (history.showOnDate.after(#dates.createNow())) ? 'active' : 'deactive'}"></th>
+								<th th:text="${history.showTime}"
+									th:classappend="${(history.showOnDate eq #dates.createToday()) or (history.showOnDate.after(#dates.createNow())) ? 'active' : 'deactive'}"></th>
+
+							</tr>
+
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

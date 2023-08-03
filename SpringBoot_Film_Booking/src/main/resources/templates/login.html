@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Login</title>
+<link rel="stylesheet" href="../css/index.css">
+<link rel="stylesheet" href="#" th:href="@{/css/bootstrap.css}" />
+<link rel="stylesheet" href="#" th:href="@{/css/all.css}" />
+<link rel="stylesheet" href="#" th:href="@{/css/index.css}" />
+</head>
+<body>
+	<div>
+		<div style="margin:5%; margin-left: 10%; margin-right: 10%; background: red; ">
+			<div style="margin:20px; margin-left: 30%; margin-right: 10%; width: 50%; padding-top: 20px;  ">
+				<form action="" method="post" style="padding-left: 5px; padding-right: 5px; border-radius: 10px;  margin-top: 10px; background: #fff; display: flex; justify-content: center;">
+						<input type="text" placeholder="search for movies..," style="border: 0px; width: 100%; margin: 2px;" />
+						<button style="width: 5%; margin: 2px; margin-right:2.5%; border: 0px; background: transparent;" >
+							<i><img src="icon/search (1).png"></i>
+						</button>
+
+				</form>
+			</div>
+		    <div style="display: flex;">
+			    <div style="flex-basis: 20%; background: red; height: 100%;">
+				    <h3 style="background: black; color: white; padding: 5px; margin: 10px; margin-bottom: 20px;">AR Multiplex Theatre</h3>
+				    <nav style="margin: 20px;">
+                        <a href="loginHome"><img src="../icon/home.png"> Home</a>
+                        <a href="/register"><img src="../icon/social.png"> Register</a>
+                        <a href="/login"><img src="../icon/security.png"> Login</a>
+                        <a href="#"><img src="../icon/id-card.png"> About Us</a>
+                        <a href="#"><img src="../icon/contact.png"> Contact Us</a>
+                    </nav>
+			    </div>
+			    <div style="flex-basis: 90%; background: #fff;">
+                    <div style="width: 100%; height: 100%;">
+                        <form action="/processing" method="post" class="regform">
+                            <h5>Login</h5>
+                            <div>Email : <input type="email" name="email" placeholder="Enter your email"></div>
+                            <div>Password : <input type="password" name="password" placeholder="Enter your Password"></div>
+                            <div><input type="submit" value="Register" class="sub"></div>
+                            <div class="clicklogin">New User<a href="/register"> Click here</a> </div>
+                        </form>
+                    </div>
+                </div>
+		    </div>
+        </div>
+	</div>
+</body>
+</html>
