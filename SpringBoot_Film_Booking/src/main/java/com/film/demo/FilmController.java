@@ -32,9 +32,10 @@ public class FilmController {
 	@Autowired
 	private CustomerDAO dao;
 	
-	@RequestMapping("/")
-	public ModelAndView index() {
-		return new ModelAndView("index");
+	@GetMapping("/")
+	public String welcome(Model m) {
+		m.addAttribute("menu", "index");
+		return "index";
 	}
 	
 	@GetMapping("/register")
@@ -122,49 +123,49 @@ public class FilmController {
 		String message = (String) session.getAttribute("msg");
 		m.addAttribute("message", message);
 		session.removeAttribute("msg");
-
+		System.out.println(message);
 		return "loginhome";
 	}
 
-	@GetMapping("/bookinglogin")
-	public String bookingCheck(@RequestParam("movieName") String movieName, Model m, HttpSession session) {
-//		List<MovieDetails> movie2 = dao.getAllMovie();
-//		List<String> checkMovie = new ArrayList<>();
-//		for (MovieDetails string : movie2) {
-//			checkMovie.add(string.getMovieName());
+//	@GetMapping("/bookinglogin")
+//	public String bookingCheck(@RequestParam("movieName") String movieName, Model m, HttpSession session) {
+////		List<MovieDetails> movie2 = dao.getAllMovie();
+////		List<String> checkMovie = new ArrayList<>();
+////		for (MovieDetails string : movie2) {
+////			checkMovie.add(string.getMovieName());
+////		}
+//		session.setAttribute("movieName", movieName);
+//		List<MovieDetails> movie = (List<MovieDetails>) dao.getAllMovieByMovieName(movieName);
+//		System.out.println(movie);
+//		if (movie!=null) {
+////			session.setAttribute("movieName", movieName);
+//			System.out.println(movieName);
+//			LocalDate now = LocalDate.now();
+//			LocalDate monthLimit = LocalDate.now();
+//			String time = "09:00 am";
+//			List<String> seatNo1 = new ArrayList<String>();
+//			List<seat> all = dao.getAllSeat(now, time);
+//
+//			for (seat s : all) {
+//				for (String s1 : s.getSeatNo()) {
+//					seatNo1.add(s1);
+//				}
+//			}
+//
+//			m.addAttribute("date", now);
+//			m.addAttribute("max", monthLimit.plusMonths(1));
+//			m.addAttribute("min", monthLimit);
+//			m.addAttribute("time", time);
+//			m.addAttribute("seats", seatNo1);
+//			return "booking";
+//
+//		} else {
+//			return "redirect:/main-dash";
 //		}
-		session.setAttribute("movieName", movieName);
-		List<MovieDetails> movie = (List<MovieDetails>) dao.getAllMovieByMovieName(movieName);
-		System.out.println(movie);
-		if (movie!=null) {
-//			session.setAttribute("movieName", movieName);
-			System.out.println(movieName);
-			LocalDate now = LocalDate.now();
-			LocalDate monthLimit = LocalDate.now();
-			String time = "09:00 am";
-			List<String> seatNo1 = new ArrayList<String>();
-			List<seat> all = dao.getAllSeat(now, time);
-
-			for (seat s : all) {
-				for (String s1 : s.getSeatNo()) {
-					seatNo1.add(s1);
-				}
-			}
-
-			m.addAttribute("date", now);
-			m.addAttribute("max", monthLimit.plusMonths(1));
-			m.addAttribute("min", monthLimit);
-			m.addAttribute("time", time);
-			m.addAttribute("seats", seatNo1);
-			return "booking";
-
-		} else {
-			return "redirect:/main-dash";
-		}
-	}
+//	}
 	
 	
-	@GetMapping("/booking-seat")
+	@GetMapping("/bookinglogin")
 	public String getUser(@RequestParam("movieName") String movieName, HttpSession session, Model m) {
 		List<MovieDetails> movie2 = dao.getAllMovie();
 		List<String> checkMovie = new ArrayList<>();
@@ -230,10 +231,10 @@ public class FilmController {
 		user object = (user) session.getAttribute("user");
 
 		if (object == null) {
-			return "redirect:/loginForm";
+			return "redirect:/login";
 		} else if ((seat.getSeatNo().isEmpty()) && (movieName.equals(null))) {
 			System.out.println("Seat is null");
-			return "redirect:/home";
+			return "redirect:/bookinglogin";
 		} else if (date == null) {
 			date = currentDate;
 			time = "09:00 am";
@@ -243,7 +244,7 @@ public class FilmController {
 				Date date2 = Date.from(date.atStartOfDay(defaultZoneId).toInstant());
 				List<Double> price = new ArrayList<Double>();
 				double sum = 0;
-				double p = 525.22d;
+				double p = 130.35d;
 				for (String s : seat.getSeatNo()) {
 					sum = sum + p;
 					price.add(p);
@@ -282,7 +283,7 @@ public class FilmController {
 				Date date2 = Date.from(date.atStartOfDay(defaultZoneId).toInstant());
 				List<Double> price = new ArrayList<Double>();
 				double sum = 0;
-				double p = 135.35d;
+				double p = 130.35d;
 				for (String s : seat.getSeatNo()) {
 					sum = sum + p;
 					price.add(p);

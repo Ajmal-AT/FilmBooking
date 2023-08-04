@@ -10,3 +10,8 @@ insert into movies_details(image,movie_details,movie_name)values("kamuki.jpg","L
 insert into movies_details(image,movie_details,movie_name)values("kgf.jpg","Action Thriller","KGF");
 show tables;
 select * from user;
+select * from date_operation;
+select * from seat;
+select * from seat_price;
+select * from seat_seat_no;
+

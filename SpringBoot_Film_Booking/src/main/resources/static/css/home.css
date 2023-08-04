@@ -1,0 +1,79 @@
+.images{
+	width: 40px;
+	height: 40px;
+	margin-right: 10px;
+}
+nav a{
+	display: block;
+	width: 100%;
+	text-decoration: none;
+	color: silver;
+	margin-bottom: 15px;
+	margin-left: 15px;
+}
+nav a:hover{
+	text-decoration: none;
+}
+h2{
+	text-align: center;
+	margin-top: 20%;
+	color: maroon;
+}
+h2:hover{
+	color: fuchsia;
+	font-family: cursive;
+}
+a.last {
+	margin-bottom: 10%;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 33%); /* Creates three equal columns */
+  grid-gap: 10px; /* Adds a gap between grid items */
+  padding: 25px; /* Adds padding around the grid */
+  background-color: #f0f0f0; /* Background color for the grid container */
+}
+
+.grid-item {
+  background-color: #ffffff; /* Background color for each grid item */
+  padding: 25px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.regform{
+	background: #ccc;
+	margin: 10%;
+	padding: 5%;
+	border-radius: 10px;
+	
+}
+.regform h5{
+	text-align: center;
+	font-family: fantasy;
+	color: teal;
+}
+.regform h5:hover {
+	color: maroon;
+}
+.regform div{
+	width: 100%;
+	margin: 10px;
+	color: navy;
+}
+.regform input {
+	width: 100%;
+	border-radius: 10px;
+	padding-left: 10px;
+}
+.regform input .sub{
+	padding-left: 0px;
+}
+.sub{
+	background:#ee8293;
+	margin-top:10px;
+	color:black;
+	border: 0px;
+}
+.sub:hover {
+	background: #f6b26b;
+}
